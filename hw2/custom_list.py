@@ -23,62 +23,14 @@ class CustomList(list):
 
         return CustomList(buf)
 
+    def __radd__(self, other):
+        return self.__add__(CustomList(other))
+
     def __sub__(self, other):
-        temp1 = self[:]
-        other1 = other[:]
-        temp1_len = len(temp1)
-        other1_len = len(other1)
-        buf = [0]*max(temp1_len, other1_len)
-
-        if temp1_len > other1_len:
-            other1 += [0]*(temp1_len - other1_len)
-            other1_len = temp1_len
-        else:
-            temp1 += [0]*(other1_len - temp1_len)
-            temp1_len = other1_len
-
-        for i in range(temp1_len):
-            buf[i] = temp1[i] - other1[i]
-
-        return CustomList(buf)
+        return self.__add__(CustomList([-1*i for i in other]))
 
     def __rsub__(self, other):
-        temp1 = self[:]
-        other1 = other[:]
-        temp1_len = len(temp1)
-        other1_len = len(other1)
-        buf = [0]*max(temp1_len, other1_len)
-
-        if temp1_len > other1_len:
-            other1 += [0]*(temp1_len - other1_len)
-            other1_len = temp1_len
-        else:
-            temp1 += [0]*(other1_len - temp1_len)
-            temp1_len = other1_len
-
-        for i in range(temp1_len):
-            buf[i] = other1[i] - temp1[i]
-
-        return CustomList(buf)
-
-    def __radd__(self, other):
-        temp1 = self[:]
-        other1 = other[:]
-        temp1_len = len(temp1)
-        other1_len = len(other1)
-        buf = [0]*max(temp1_len, other1_len)
-
-        if temp1_len > other1_len:
-            other1 += [0]*(temp1_len - other1_len)
-            other1_len = temp1_len
-        else:
-            temp1 += [0]*(other1_len - temp1_len)
-            temp1_len = other1_len
-
-        for i in range(temp1_len):
-            buf[i] = temp1[i] + other1[i]
-
-        return CustomList(buf)
+        return CustomList([-1*i for i in self.__sub__(other)])
 
     def __eq__(self, other):
         return sum(self) == sum(other)

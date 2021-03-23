@@ -1,6 +1,6 @@
 """ Created by Egor Iudin """
 import unittest
-from .custom_list import CustomList
+from custom_list import CustomList
 
 
 class TestMetaClass(unittest.TestCase):
