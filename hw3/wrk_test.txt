@@ -1,0 +1,12 @@
+//Gunicorn
+curl localhost:8000/apapapapa
+./wrk -t8 -c200 -d30s --timeout 2s http://localhost:8000/apapapapa
+
+//Gunicorn w/ proxy                                                  
+curl localhost/api/papap
+./wrk -t8 -c200 -d30s --timeout 2s http://localhost/api/papap
+
+//Gunicorn                                                  
+curl localhost/test1/test
+./wrk -t8 -c200 -d30s --timeout 2s http://localhost/test1/test
+
