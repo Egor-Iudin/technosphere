@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block main %}
+<div class="conatiner">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <form method="POST">
+        <h3>Создаст элемент с определенным ID</h3>
+        {% csrf_token %}
+        <div class="col-auto">
+          <input
+            class="form-control form-control-lg m-auto"
+            type="text"
+            placeholder="ID"
+            value="4"
+            readonly
+            style="max-width: 320px;"
+            aria-label=".form-control-lg example"
+          />
+        </div>
+        <div class="col-auto mt-2">
+          <button type="submit" class="btn btn-lg btn-primary mb-3">
+            Confirm
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div>{% endblock main %}</div>
+</div>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+  <div class="col">
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-header py-3">
+        <h4 class="my-0 fw-normal">Users</h4>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'users' %}" type="button" class="w-100 btn btn-lg btn-outline-primary mb-2">
+          All Users
+        </a>
+        <a href="{% url 'user' 1 %}" type="button" class="w-100 btn btn-lg btn-outline-primary mb-2">
+          User w/ id
+        </a>
+        <a href="{% url 'create_user' %}" type="button" class="w-100 btn btn-lg btn-outline-primary">
+          Create User
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4 rounded-3 shadow-sm">
+      <div class="card-header py-3">
+        <h4 class="my-0 fw-normal">Messages</h4>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'message' 1 %}" type="button" class="w-100 btn btn-lg btn-primary mb-2">
+          Message w/ id
+        </a>
+        <a href="{% url 'create_message' %}" type="button" class="w-100 btn btn-lg btn-primary">
+          Create Message
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+      <div class="card-header py-3 text-white bg-primary border-primary">
+        <h4 class="my-0 fw-normal">Chats</h4>
+      </div>
+      <div class="card-body">
+        <a href="{% url 'chats' %}" type="button" class="w-100 btn btn-lg btn-primary mb-2">
+          All chats
+        </a>
+        <a href="{% url 'chat' 1 %}" type="button" class="w-100 btn btn-lg btn-primary mb-2">
+          Chat w/ id
+        </a>
+        <a href="{% url 'create_chat' %}" type="button" class="w-100 btn btn-lg btn-primary">
+          Create Chat
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}
