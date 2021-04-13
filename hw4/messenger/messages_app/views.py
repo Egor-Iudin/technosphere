@@ -1,19 +1,18 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib.auth.models import User
+from .models import Message
 
 
-def message(request, message_id):
+def message(request, user_id):
     if request.method == 'GET':
+        data = [[i.text, i.created_date, [[i.username, i.id] for i in list(
+            i.users.all())]] for i in Message.objects.filter(users=User.objects.get(id=user_id))]
         return JsonResponse({
             'status': 'ok',
-            'message_id': message_id,
-            'data':
-            [
-                'test',
-                'users',
-                'media_urls'
-            ],
+            'user_id': user_id,
+            'data': data,
         })
 
 

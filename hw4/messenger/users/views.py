@@ -1,51 +1,24 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 
 
 def users(request):
     if request.method == 'GET':
+        users = [[i.username, i.id] for i in User.objects.all()]
         return JsonResponse({
             'status': 'ok',
-            'users': [
-                {
-                    'user_id': 1,
-                    'data':
-                    [
-                        'name',
-                        'surname',
-                    ],
-                },
-                {
-                    'user_id': 2,
-                    'data':
-                    [
-                        'name',
-                        'surname',
-                    ],
-                },
-                {
-                    'user_id': 3,
-                    'data':
-                    [
-                        'name',
-                        'surname',
-                    ],
-                },
-            ],
-        })
+            'users': users})
 
 
 def user(request, user_id):
     if request.method == 'GET':
+        user = User.objects.get(id=user_id)
+        data = [user.username, user.id]
         return JsonResponse({
             'status': 'ok',
             'user_id': user_id,
-            'data':
-            [
-                'name',
-                'surname',
-            ],
+            'data': data,
         })
 
 
