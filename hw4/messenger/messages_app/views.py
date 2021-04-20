@@ -16,7 +16,6 @@ def message(request, user_id):
         })
 
 
-# @csrf_exempt
 def create_message(request):
     if request.method == 'POST':
         return JsonResponse({

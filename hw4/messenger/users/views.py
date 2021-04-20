@@ -13,6 +13,12 @@ def users(request):
 
 def user(request, user_id):
     if request.method == 'GET':
+        if not User.objects.filter(id=user_id).exists():
+            return JsonResponse({
+            'status': 'not ok',
+            'error': "user does not exist",
+        })
+        
         user = User.objects.get(id=user_id)
         data = [user.username, user.id]
         return JsonResponse({
